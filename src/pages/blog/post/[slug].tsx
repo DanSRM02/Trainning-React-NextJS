@@ -1,8 +1,6 @@
 import CardPost from "@/components/post/cardPost";
 import { DUMMY_POSTS } from "@/utils/data";
 import { useRouter } from "next/router";
-import MainLayout from "../_app";
-import { notFound } from "next/navigation";
 
 export default function Post() {
   const router = useRouter();
@@ -13,14 +11,8 @@ export default function Post() {
   });
 
   if (!cardInfoPost) {
-    notFound();
+    return "Post not found"
   }
 
-  return (
-    <>
-      <MainLayout>
-        <CardPost {...cardInfoPost} />
-      </MainLayout>
-    </>
-  );
+  return <CardPost {...cardInfoPost} />;
 }
