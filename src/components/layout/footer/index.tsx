@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="w-full p-4 bg-gray-800 text-gray-300 flex flex-col sm:flex-row justify-between items-center mt-10 text-sm">
+    <footer className="w-full p-4 bg-gray-800 text-gray-300 flex flex-col sm:flex-row justify-between items-center  text-sm">
     
       <div className="mb-2 sm:mb-0">        
         <span className="font-bold">React Post</span>. All Rights Reserved.
