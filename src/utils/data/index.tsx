@@ -5,9 +5,9 @@ import hikingImage from "@/assets/images/posts/hiking.jpg";
 import landscapeImage from "@/assets/images/posts/landscape.jpg";
 import { postTypes } from "../types/postType";
 
-export const DUMMY_POSTS : postTypes[] = [
+export const DUMMY_POSTS: postTypes[] = [
   {
-    id: "n1",
+    id: 1,
     slug: "will-ai-replace-humans",
     title: "Will AI Replace Humans?",
     image: airobotImage,
@@ -16,7 +16,7 @@ export const DUMMY_POSTS : postTypes[] = [
       "Since late 2022 AI is on the rise and therefore many people worry whether AI will replace humans. The answer is not that simple. AI is a tool that can be used to automate tasks, but it can also be used to augment human capabilities. The future is not set in stone, but it is clear that AI will play a big role in the future. The question is how we will use it.",
   },
   {
-    id: "n2",
+    id: 2,
     slug: "beaver-plague",
     title: "A Plague of Beavers",
     image: beaverImage,
@@ -25,7 +25,7 @@ export const DUMMY_POSTS : postTypes[] = [
       "Beavers are taking over the world. They are building dams everywhere and flooding entire cities. What can we do to stop them?",
   },
   {
-    id: "n3",
+    id: 3,
     slug: "couple-cooking",
     title: "Spend more time together!",
     image: coupleCookingImage,
@@ -34,7 +34,7 @@ export const DUMMY_POSTS : postTypes[] = [
       "Cooking together is a great way to spend more time with your partner. It is fun and you get to eat something delicious afterwards. What are you waiting for? Get cooking!",
   },
   {
-    id: "n4",
+    id: 4,
     slug: "hiking",
     title: "Hiking is the best!",
     image: hikingImage,
@@ -43,7 +43,7 @@ export const DUMMY_POSTS : postTypes[] = [
       "Hiking is a great way to get some exercise and enjoy the great outdoors. It is also a great way to clear your mind and reduce stress. So what are you waiting for? Get out there and start hiking!",
   },
   {
-    id: "n5",
+    id: 5,
     slug: "landscape",
     title: "The beauty of landscape",
     image: landscapeImage,
@@ -52,3 +52,19 @@ export const DUMMY_POSTS : postTypes[] = [
       "Landscape photography is a great way to capture the beauty of nature. It is also a great way to get outside and enjoy the great outdoors. So what are you waiting for? Get out there and start taking some pictures!",
   },
 ];
+
+export async function getData() {
+  const url = "https://jsonplaceholder.typicode.com/posts";
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    throw error
+  }
+}

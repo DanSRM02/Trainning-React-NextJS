@@ -16,12 +16,14 @@ function CardPost({ title, date, image, content }: postTypes) {
       </header>
 
       <div className="w-full mb-8">
-        <Image
-          src={image}
-          alt={title}
-          className="w-full h-auto object-cover rounded-lg shadow-2xl"
-          priority
-        />
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            className="w-full h-auto object-cover rounded-lg shadow-2xl"
+            priority
+          />
+        )}
       </div>
       <p>{content}</p>
       <div className="prose prose-lg prose-invert max-w-none" />

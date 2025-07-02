@@ -5,11 +5,13 @@ import "./globals.css";
 
 function MainLayout({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <main className="flex flex-col">
       <MainHeader />
+      <div className="mx-[42rem]">
         <Component {...pageProps} />
+      </div>
       <Footer />
-    </>
+    </main>
   );
 }
 
