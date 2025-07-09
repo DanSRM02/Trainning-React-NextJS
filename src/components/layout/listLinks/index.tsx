@@ -1,8 +1,8 @@
-import { postTypes } from "@/utils/types/postType";
+import { dataResponse } from "@/utils/types/reponseType";
 import Link from "next/link";
 
 type ListLinksProps = {
-  listPostInfo: postTypes[];
+  listPostInfo: dataResponse[];
 };
 function ListLinks({ listPostInfo }: ListLinksProps) {
   return listPostInfo.map((post) => (
