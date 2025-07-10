@@ -11,10 +11,11 @@ const InputsMap = (InputList: React.ReactNode[]) => {
 };
 
 export const FormComponent = ({
+  HandleClickButton,
   Inputs,
   ButtonText,
   Title,
-  FormId
+  FormId,
 }: FormContainerProps) => {
   return (
     // 👇 1. Se añade la clase principal al formulario
@@ -22,8 +23,7 @@ export const FormComponent = ({
       {/* 👇 2. Se añade la clase al título */}
       <h2 className="form-title">{Title}</h2>
       {InputsMap(Inputs as React.ReactNode[])}
-      {/* 👇 3. Se asegura que el botón tenga el tipo correcto */}
-      <button type="submit">{ButtonText}</button>
+      <button type="button" onClick={HandleClickButton}>{ButtonText}</button>
     </form>
   );
 };

@@ -1,5 +1,6 @@
 
-export const enum SegurityLevel {
+export const enum SecurityLevel {
+    none = 0,
     low = 30, 
     medium = 50,
     high = 70,
@@ -18,5 +19,5 @@ export type CardProps = {
 
     NumbersAmount: number;
 
-    SegurityLevel: SegurityLevel;
+    SegurityLevel: SecurityLevel;
 }

@@ -1,15 +1,9 @@
- import React from 'react';
- 
+import React from "react";
+
 export type FormContainerProps = {
-    FormId?: string;
-
-
-
-    Inputs: React.ReactNode[];
-    
-    Title?: string;
-
-    ButtonText?: string
-} 
-
-
+  HandleClickButton: () => void;
+  Inputs: React.ReactNode[];
+  FormId?: string;
+  Title?: string;
+  ButtonText?: string;
+};
