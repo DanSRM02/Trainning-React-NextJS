@@ -8,12 +8,15 @@ export const PasswordFeedback = (props: CardProps) => {
 
   const CardProps = props;
 
-  if (!CardProps ) {
+  if (!CardProps) {
     Setinit(false);
-
   }
 
-  return init ? RenderFeedback(CardProps) : <h2>ingrese una contraseña para iniciar</h2>;
+  return init ? (
+    RenderFeedback(CardProps)
+  ) : (
+    <h2>ingrese una contraseña para iniciar</h2>
+  );
 };
 
 function RenderFeedback({
@@ -33,7 +36,7 @@ function RenderFeedback({
       <p>Special Characters: {SpecialCharNumber}</p>
       <p>Security Level:</p>
       <progress id="file" value={SegurityLevel} max="100">
-        {SegurityLevel + "%"}
+        {SegurityLevel}
       </progress>
     </div>
   );
