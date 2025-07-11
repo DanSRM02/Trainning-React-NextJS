@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-// Es crucial importar los estilos globales en el layout principal
 import "./globals.css";
-// 1. Importamos los componentes de Header y Footer
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
@@ -17,8 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        {/* 2. Añadimos el contenedor principal y los componentes */}
+      <body>        
         <div className="main-layout">
           <Header />
           <main>{children}</main>

@@ -1,6 +1,5 @@
 /* --- Estilos Futuristas Globales para la Aplicación --- */
 
-/* 1. Importamos la tipografía y definimos variables de color */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
@@ -135,7 +134,6 @@ main {
 .futuristic-form .form-title { font-size: 1.8rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; color: var(--text-color); text-shadow: 0 0 8px var(--primary-glow-transparent); margin: 0; }
 .futuristic-form { display: flex; flex-direction: column; gap: 1.5rem; }
 
-/* CORRECCIÓN: Se añade !important para forzar los estilos */
 .futuristic-input { 
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -154,8 +152,6 @@ main {
 
 .futuristic-input::placeholder { color: rgba(199, 210, 254, 0.5); }
 .futuristic-input:focus { outline: none; border-color: var(--primary-glow); box-shadow: 0 0 15px var(--primary-glow-transparent); }
-
-/* CORRECCIÓN: Se añade !important para forzar los estilos */
 .futuristic-form button { 
   -webkit-appearance: none !important;
   appearance: none !important;

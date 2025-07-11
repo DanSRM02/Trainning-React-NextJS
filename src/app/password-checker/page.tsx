@@ -1,71 +1,76 @@
 "use client";
 
-import React, { useState } from "react";
-import { CardComponent } from "@/components/Card";
+import React, { ChangeEvent, useState } from "react";
 import { FormComponent } from "@/components/form";
-import { CardProps } from "@/components/Card/types/CardTypes";
+import {
+  lowerCaseRegExp,
+  numbersCharactersRegExp,
+  specialCharactersRegExp,
+  uppercaseRegExp,
+} from "@/utils/data/regexp";
+import {
+  calculateCharacterPassword,
+  calculatePasswordStrength,
+  getSecurityLevelFromScore,
+} from "@/utils/logic";
+import { charactersInPasswordType } from "@/utils/types/charactersInPasswordType";
+import { SecurityLevel } from "@/components/Card/types/CardTypes";
+import { CardComponent } from "@/components/Card";
 
-// Lógica para analizar la contraseña en tiempo real
-const analyzePassword = (password: string): CardProps => {
-  const lower = (password.match(/[a-z]/g) || []).length;
-  const upper = (password.match(/[A-Z]/g) || []).length;
-  const numbers = (password.match(/[0-9]/g) || []).length;
-  const special = password.length - lower - upper - numbers;
+function PasswordChecker() {
+  const [password, setPassword] = useState("");
+  const [charactersInPassword, setCharactersInPassword] =
+    useState<charactersInPasswordType>();
 
-  let score = 0;
-  if (password.length >= 8) score += 25;
-  if (lower > 0) score += 10;
-  if (upper > 0) score += 15;
-  if (numbers > 0) score += 20;
-  if (special > 0) score += 30;
-  
-  const finalScore = Math.min(100, score);
-
-  return {
-    CharNumber: password.length,
-    LowerCaseNumber: lower,
-    UpperCaseNumber: upper,
-    NumbersAmount: numbers,
-    SpecialCharNumber: special,
-    SegurityLevel: finalScore,
-  };
-};
-
-function PasswordCheckerPage() {
-  const [feedback, setFeedback] = useState<CardProps | null>(null);
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newPassword = event.target.value;
-    if (newPassword === "") {
-        setFeedback(null);
-    } else {
-        setFeedback(analyzePassword(newPassword));
-    }
+  const handleValuePassword = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
-  const Inputs = [
+  const handleClickButton = () => {
+    const characterCounts = calculateCharacterPassword(password);
+
+    const strengthScore = calculatePasswordStrength(password);
+
+    const securityLevel = getSecurityLevelFromScore(strengthScore);
+
+    setCharactersInPassword({
+      ...characterCounts,
+      securityLevel: securityLevel,
+    });
+  };
+
+  const inputs = [
     <input
       key="password-input"
       type="password"
-      placeholder="Enter your password..."
-      onChange={handlePasswordChange}
-      // 👇 AÑADIMOS ESTA CLASE DIRECTAMENTE AL INPUT 👇
+      placeholder="Enter your password"
       className="futuristic-input"
       required
+      onChange={handleValuePassword}
     />,
   ];
 
   return (
     <>
       <FormComponent
-        Inputs={Inputs}
-        ButtonText="Verificar"
-        FormId="form1"
-        Title="Password Security"
+        handleClickButton={handleClickButton}
+        inputs={inputs}
+        buttonText="Check Your Password"
+        title="CHECKER"
       />
-      {feedback && <CardComponent {...feedback} />}
+
+      <CardComponent
+        charNumber={charactersInPassword?.totalLength || 0}
+        lowerCaseNumber={charactersInPassword?.lowerCase || 0}
+        upperCaseNumber={charactersInPassword?.upperCase || 0}
+        numbersAmount={charactersInPassword?.numbersAmount || 0}
+        specialCharNumber={charactersInPassword?.specialCharacters || 0}
+        securityLevel={
+          charactersInPassword?.securityLevel || SecurityLevel.none
+        }
+      />
     </>
   );
 }
 
-export default PasswordCheckerPage;
+export default PasswordChecker;

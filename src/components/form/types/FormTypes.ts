@@ -1,9 +1,9 @@
 import React from "react";
 
 export type FormContainerProps = {
-  HandleClickButton: () => void;
-  Inputs: React.ReactNode[];
-  FormId?: string;
-  Title?: string;
-  ButtonText?: string;
+  handleClickButton: () => void;
+  inputs: React.ReactNode[];
+  formId?: string;
+  title?: string;
+  buttonText?: string;
 };
