@@ -1,26 +1,157 @@
-@import "tailwindcss";
+/* --- Estilos Futuristas (Para componentes sin modificar) --- */
+
+/* 1. Importamos la tipografía y definimos variables de color */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-glow: #00f6ff;
+  --primary-glow-transparent: rgba(0, 246, 255, 0.7);
+  --dark-bg: #0a192f;
+  --glass-bg: rgba(10, 25, 47, 0.85);
+  --text-color: #c7d2fe;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 2. Estilos Globales y de Fondo */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--dark-bg);
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  
+  /* Centramos los componentes directamente en el body */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* Espacio entre el formulario y la tarjeta de feedback */
+  min-height: 100vh;
+}
+
+/* 3. Estilos para el Formulario y la Tarjeta de Feedback */
+/* Usamos selectores de etiqueta y :has() para no necesitar clases.
+   - 'form' selecciona el componente de formulario.
+   - 'div:has(> progress)' selecciona cualquier div que contenga directamente una barra de progreso.
+*/
+form, div:has(> progress) {
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 246, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 
+              0 0 8px rgba(0, 246, 255, 0.6) inset;
+  animation: pulse-glow 5s infinite ease-in-out;
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+
+/* Estilos para el contenido del formulario */
+form h2 { 
+  font-size: 1.8rem; 
+  text-align: center; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  color: var(--text-color); 
+  text-shadow: 0 0 8px var(--primary-glow-transparent); 
+  margin: 0 0 1.5rem 0;
+}
+form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.5rem; 
+}
+form input[type="password"] { 
+  width: 100%; 
+  padding: 1rem; 
+  background: var(--dark-bg); 
+  border: 1px solid rgba(0, 246, 255, 0.4); 
+  border-radius: 8px; 
+  color: var(--text-color); 
+  font-family: 'Orbitron', sans-serif; 
+  font-size: 1rem; 
+  letter-spacing: 1px; 
+  transition: all 0.3s ease; 
+  box-sizing: border-box; 
+}
+form input[type="password"]::placeholder { 
+  color: rgba(199, 210, 254, 0.5); 
+}
+form input[type="password"]:focus { 
+  outline: none; 
+  border-color: var(--primary-glow); 
+  box-shadow: 0 0 15px var(--primary-glow-transparent); 
+}
+form button { 
+  padding: 1rem; 
+  background: transparent; 
+  border: 2px solid var(--primary-glow); 
+  border-radius: 8px; 
+  color: var(--primary-glow); 
+  font-family: 'Orbitron', sans-serif; 
+  font-size: 1.2rem; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  text-shadow: 0 0 8px var(--primary-glow-transparent); 
+}
+form button:hover { 
+  background: var(--primary-glow); 
+  color: var(--dark-bg); 
+  box-shadow: 0 0 25px var(--primary-glow); 
+  text-shadow: none; 
+}
+
+/* Estilos para el contenido de la tarjeta de feedback */
+div:has(> progress) p { 
+  color: var(--text-color); 
+  text-shadow: 0 0 5px var(--primary-glow-transparent); 
+  text-transform: uppercase; 
+  letter-spacing: 1.5px; 
+  margin: 0 0 1rem 0; 
+}
+
+/* Estilo para el h2 del mensaje inicial */
+h2 {
+  text-align: center; 
+  font-size: 1.2rem; 
+  color: var(--text-color); 
+  text-shadow: 0 0 5px var(--primary-glow-transparent); 
+  text-transform: uppercase; 
+  letter-spacing: 1.5px;
+}
+
+/* Estilos para la barra de progreso (con un look fijo y llamativo) */
+progress { 
+  width: 100%; 
+  height: 10px; 
+  -webkit-appearance: none; 
+  appearance: none; 
+  border: 1px solid rgba(0, 246, 255, 0.2); 
+  border-radius: 5px; 
+  overflow: hidden; 
+  background-color: var(--dark-bg); 
+}
+progress::-webkit-progress-bar { 
+  background-color: transparent; 
+}
+progress::-webkit-progress-value { 
+  border-radius: 4px; 
+  background: linear-gradient(90deg, #00c2d1, #00ff87); /* Gradiente fijo turquesa a verde */
+  box-shadow: 0 0 8px #00ff87, 0 0 4px #00ff87 inset; /* Efecto de brillo */
+}
+progress::-moz-progress-bar { 
+  border-radius: 4px; 
+  background: linear-gradient(90deg, #00c2d1, #00ff87);
+  box-shadow: 0 0 8px #00ff87, 0 0 4px #00ff87 inset;
+}
+
+/* Animación de pulso para el brillo de las tarjetas */
+@keyframes pulse-glow { 
+  0% { box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 0 0 8px rgba(0, 246, 255, 0.6) inset; } 
+  50% { box-shadow: 0 0 35px rgba(0, 246, 255, 0.6), 0 0 10px rgba(0, 246, 255, 0.8) inset; } 
+  100% { box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 0 0 8px rgba(0, 246, 255, 0.6) inset; } 
 }
