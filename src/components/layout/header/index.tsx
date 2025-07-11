@@ -1,23 +1,29 @@
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-export default function MainHeader() {
+// Exportamos el componente con el nombre 'Header'
+export const Header = () => {
   return (
-    <header className="w-full p-4 bg-gray-800 text-white flex justify-between items-center shadow-md">
-      <div className="text-xl font-bold">
-        <Link href="/blog" className="hover:text-cyan-400 transition-colors">
-          Blog
+    <header className="futuristic-header">
+      <div className="logo">
+        <Link href="/">
+          SECURE-CHECK
         </Link>
       </div>
-
       <nav>
-        <ul className="flex gap-4 items-center">
+        <ul>
           <li>
-            <Link href="/blog" className="hover:underline">
-              Post
+            <Link href="/password-checker" className="active">
+              Checker
+            </Link>
+          </li>
+          <li>
+            <Link href="#">
+              Blog
             </Link>
           </li>
         </ul>
       </nav>
     </header>
   );
-}
+};
