@@ -1,4 +1,4 @@
-/* --- Estilos Futuristas (Para componentes sin modificar) --- */
+/* --- Estilos Futuristas Globales para la Aplicación --- */
 
 /* 1. Importamos la tipografía y definimos variables de color */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
@@ -6,6 +6,9 @@
 :root {
   --primary-glow: #00f6ff;
   --primary-glow-transparent: rgba(0, 246, 255, 0.7);
+  --danger-glow: #ff003c;
+  --warning-glow: #ff8c00;
+  --success-glow: #00ff87;
   --dark-bg: #0a192f;
   --glass-bg: rgba(10, 25, 47, 0.85);
   --text-color: #c7d2fe;
@@ -17,22 +20,104 @@ body {
   background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
   font-family: 'Orbitron', sans-serif;
   margin: 0;
-  padding: 2rem;
-  
-  /* Centramos los componentes directamente en el body */
+  padding: 0;
+}
+
+/* 3. Layout Principal */
+.main-layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem; /* Espacio entre el formulario y la tarjeta de feedback */
   min-height: 100vh;
 }
 
-/* 3. Estilos para el Formulario y la Tarjeta de Feedback */
-/* Usamos selectores de etiqueta y :has() para no necesitar clases.
-   - 'form' selecciona el componente de formulario.
-   - 'div:has(> progress)' selecciona cualquier div que contenga directamente una barra de progreso.
-*/
-form, div:has(> progress) {
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* ======================================================================== */
+/* 4. HEADER / CABECERA */
+/* ======================================================================== */
+.futuristic-header {
+  padding: 1rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 246, 255, 0.3);
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.futuristic-header .logo a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-glow);
+  text-transform: uppercase;
+  text-shadow: 0 0 10px var(--primary-glow);
+  text-decoration: none;
+}
+
+.futuristic-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.futuristic-header nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.futuristic-header nav a:hover,
+.futuristic-header nav a.active {
+  color: var(--primary-glow);
+  text-shadow: 0 0 8px var(--primary-glow-transparent);
+  border-bottom-color: var(--primary-glow);
+}
+
+/* ======================================================================== */
+/* 5. FOOTER / PIE DE PÁGINA */
+/* ======================================================================== */
+.futuristic-footer {
+  padding: 1.5rem 2rem;
+  background: rgba(10, 25, 47, 0.95);
+  border-top: 1px solid rgba(0, 246, 255, 0.3);
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(199, 210, 254, 0.6);
+}
+
+/* ======================================================================== */
+/* 6. ESTILOS PARA LOS COMPONENTES DEL VERIFICADOR */
+/* ======================================================================== */
+
+.password-checker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.futuristic-form, .feedback-card, .initial-message {
   padding: 2rem;
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
@@ -47,107 +132,69 @@ form, div:has(> progress) {
   box-sizing: border-box;
 }
 
-/* Estilos para el contenido del formulario */
-form h2 { 
-  font-size: 1.8rem; 
-  text-align: center; 
-  text-transform: uppercase; 
-  letter-spacing: 2px; 
-  color: var(--text-color); 
-  text-shadow: 0 0 8px var(--primary-glow-transparent); 
-  margin: 0 0 1.5rem 0;
-}
-form { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 1.5rem; 
-}
-form input[type="password"] { 
-  width: 100%; 
-  padding: 1rem; 
-  background: var(--dark-bg); 
-  border: 1px solid rgba(0, 246, 255, 0.4); 
-  border-radius: 8px; 
-  color: var(--text-color); 
-  font-family: 'Orbitron', sans-serif; 
-  font-size: 1rem; 
-  letter-spacing: 1px; 
-  transition: all 0.3s ease; 
-  box-sizing: border-box; 
-}
-form input[type="password"]::placeholder { 
-  color: rgba(199, 210, 254, 0.5); 
-}
-form input[type="password"]:focus { 
-  outline: none; 
-  border-color: var(--primary-glow); 
-  box-shadow: 0 0 15px var(--primary-glow-transparent); 
-}
-form button { 
-  padding: 1rem; 
-  background: transparent; 
-  border: 2px solid var(--primary-glow); 
-  border-radius: 8px; 
-  color: var(--primary-glow); 
-  font-family: 'Orbitron', sans-serif; 
-  font-size: 1.2rem; 
-  font-weight: 700; 
-  text-transform: uppercase; 
-  letter-spacing: 2px; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  text-shadow: 0 0 8px var(--primary-glow-transparent); 
-}
-form button:hover { 
-  background: var(--primary-glow); 
-  color: var(--dark-bg); 
-  box-shadow: 0 0 25px var(--primary-glow); 
-  text-shadow: none; 
+.futuristic-form .form-title { font-size: 1.8rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; color: var(--text-color); text-shadow: 0 0 8px var(--primary-glow-transparent); margin: 0; }
+.futuristic-form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* CORRECCIÓN: Se añade !important para forzar los estilos */
+.futuristic-input { 
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 100% !important; 
+  padding: 1rem !important; 
+  background: var(--dark-bg) !important; 
+  border: 1px solid rgba(0, 246, 255, 0.4) !important; 
+  border-radius: 8px !important; 
+  color: var(--text-color) !important; 
+  font-family: 'Orbitron', sans-serif !important; 
+  font-size: 1rem !important; 
+  letter-spacing: 1px !important; 
+  transition: all 0.3s ease !important; 
+  box-sizing: border-box !important; 
 }
 
-/* Estilos para el contenido de la tarjeta de feedback */
-div:has(> progress) p { 
-  color: var(--text-color); 
-  text-shadow: 0 0 5px var(--primary-glow-transparent); 
-  text-transform: uppercase; 
-  letter-spacing: 1.5px; 
-  margin: 0 0 1rem 0; 
-}
+.futuristic-input::placeholder { color: rgba(199, 210, 254, 0.5); }
+.futuristic-input:focus { outline: none; border-color: var(--primary-glow); box-shadow: 0 0 15px var(--primary-glow-transparent); }
 
-/* Estilo para el h2 del mensaje inicial */
-h2 {
-  text-align: center; 
-  font-size: 1.2rem; 
-  color: var(--text-color); 
-  text-shadow: 0 0 5px var(--primary-glow-transparent); 
-  text-transform: uppercase; 
-  letter-spacing: 1.5px;
+/* CORRECCIÓN: Se añade !important para forzar los estilos */
+.futuristic-form button { 
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  padding: 1rem !important; 
+  background: transparent !important; 
+  border: 2px solid var(--primary-glow) !important; 
+  border-radius: 8px !important; 
+  color: var(--primary-glow) !important; 
+  font-family: 'Orbitron', sans-serif !important; 
+  font-size: 1.2rem !important; 
+  font-weight: 700 !important; 
+  text-transform: uppercase !important; 
+  letter-spacing: 2px !important; 
+  cursor: pointer !important; 
+  transition: all 0.3s ease !important; 
+  text-shadow: 0 0 8px var(--primary-glow-transparent) !important; 
 }
-
-/* Estilos para la barra de progreso (con un look fijo y llamativo) */
-progress { 
-  width: 100%; 
-  height: 10px; 
-  -webkit-appearance: none; 
-  appearance: none; 
-  border: 1px solid rgba(0, 246, 255, 0.2); 
-  border-radius: 5px; 
-  overflow: hidden; 
-  background-color: var(--dark-bg); 
+.futuristic-form button:hover { 
+  background: var(--primary-glow) !important; 
+  color: var(--dark-bg) !important; 
+  box-shadow: 0 0 25px var(--primary-glow) !important; 
+  text-shadow: none !important; 
 }
-progress::-webkit-progress-bar { 
-  background-color: transparent; 
-}
-progress::-webkit-progress-value { 
-  border-radius: 4px; 
-  background: linear-gradient(90deg, #00c2d1, #00ff87); /* Gradiente fijo turquesa a verde */
-  box-shadow: 0 0 8px #00ff87, 0 0 4px #00ff87 inset; /* Efecto de brillo */
-}
-progress::-moz-progress-bar { 
-  border-radius: 4px; 
-  background: linear-gradient(90deg, #00c2d1, #00ff87);
-  box-shadow: 0 0 8px #00ff87, 0 0 4px #00ff87 inset;
-}
+.feedback-card p, .initial-message { color: var(--text-color); text-shadow: 0 0 5px var(--primary-glow-transparent); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 1rem 0; }
+.initial-message { text-align: center; font-size: 1.2rem; }
+.feedback-card progress { width: 100%; height: 10px; -webkit-appearance: none; appearance: none; border: 1px solid rgba(0, 246, 255, 0.2); border-radius: 5px; overflow: hidden; background-color: var(--dark-bg); }
+.feedback-card progress::-webkit-progress-bar { background-color: transparent; }
+.feedback-card progress::-webkit-progress-value { border-radius: 4px; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+.feedback-card progress::-moz-progress-bar { border-radius: 4px; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+.feedback-card progress[data-level="0"]::-webkit-progress-value { background: #4a5568; }
+.feedback-card progress[data-level="0"]::-moz-progress-bar { background: #4a5568; }
+.feedback-card progress[data-level="1"]::-webkit-progress-value { background: linear-gradient(90deg, var(--danger-glow), #ff4d6d); box-shadow: 0 0 8px var(--danger-glow), 0 0 4px var(--danger-glow) inset; }
+.feedback-card progress[data-level="1"]::-moz-progress-bar { background: linear-gradient(90deg, var(--danger-glow), #ff4d6d); box-shadow: 0 0 8px var(--danger-glow), 0 0 4px var(--danger-glow) inset; }
+.feedback-card progress[data-level="2"]::-webkit-progress-value { background: linear-gradient(90deg, var(--warning-glow), #ffae42); box-shadow: 0 0 8px var(--warning-glow), 0 0 4px var(--warning-glow) inset; }
+.feedback-card progress[data-level="2"]::-moz-progress-bar { background: linear-gradient(90deg, var(--warning-glow), #ffae42); box-shadow: 0 0 8px var(--warning-glow), 0 0 4px var(--warning-glow) inset; }
+.feedback-card progress[data-level="3"]::-webkit-progress-value { background: linear-gradient(90deg, #00c2d1, var(--primary-glow)); box-shadow: 0 0 8px var(--primary-glow), 0 0 4px var(--primary-glow) inset; }
+.feedback-card progress[data-level="3"]::-moz-progress-bar { background: linear-gradient(90deg, #00c2d1, var(--primary-glow)); box-shadow: 0 0 8px var(--primary-glow), 0 0 4px var(--primary-glow) inset; }
+.feedback-card progress[data-level="4"]::-webkit-progress-value { background: linear-gradient(90deg, var(--success-glow), #6fffd2); box-shadow: 0 0 8px var(--success-glow), 0 0 4px var(--success-glow) inset; }
+.feedback-card progress[data-level="4"]::-moz-progress-bar { background: linear-gradient(90deg, var(--success-glow), #6fffd2); box-shadow: 0 0 8px var(--success-glow), 0 0 4px var(--success-glow) inset; }
 
 /* Animación de pulso para el brillo de las tarjetas */
 @keyframes pulse-glow { 

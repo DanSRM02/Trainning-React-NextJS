@@ -1,39 +1,12 @@
-function Footer() {
+import React from 'react';
+
+// Corregido: Exportamos el componente con el nombre 'Footer'
+// para que coincida con la importación en layout.tsx
+export const Footer = () => {
   return (
-    <footer className="w-full p-4 bg-gray-800 text-gray-300 flex flex-col sm:flex-row justify-between items-center  text-sm">
-    
-      <div className="mb-2 sm:mb-0">        
-        <span className="font-bold">React Post</span>. All Rights Reserved.
-      </div>
-      
-      <div className="flex gap-4">
-        <a
-          href="https://twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >          
-          [Twitter]
-        </a>
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >          
-          [GitHub]
-        </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >          
-          [LinkedIn]
-        </a>
-      </div>
+    // Aplicamos la clase que ya definimos en globals.css
+    <footer className="futuristic-footer">
+      &copy; 2025 - PROYECTO DE SEGURIDAD
     </footer>
   );
-}
-
-export default Footer;
+};
