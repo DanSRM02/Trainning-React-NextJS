@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-// Exportamos el componente con el nombre 'Header'
 export const Header = () => {
   return (
     <header className="futuristic-header">

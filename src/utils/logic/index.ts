@@ -1,4 +1,6 @@
 import { SecurityLevel } from "@/components/Card/types/CardTypes";
+import { charactersInPasswordType } from "../types/charactersInPasswordType";
+import { lowerCaseRegExp, numbersCharactersRegExp, specialCharactersRegExp, uppercaseRegExp } from "../data/regexp";
 
 export function getSecurityLevelFromScore(score: number): SecurityLevel {
   if (score >= SecurityLevel.high) return SecurityLevel.high;
@@ -7,6 +9,25 @@ export function getSecurityLevelFromScore(score: number): SecurityLevel {
   if (score > 0) return SecurityLevel.none;
   return SecurityLevel.none;
 }
+
+export const calculateCharacterPassword = (
+  password: string
+): Omit<charactersInPasswordType, "securityLevel"> => {
+  const upperCase = password.match(uppercaseRegExp)?.length || 0;
+  const lowerCase = password.match(lowerCaseRegExp)?.length || 0;
+  const totalLength = password.length;
+  const numbersAmount = password.match(numbersCharactersRegExp)?.length || 0;
+  const specialCharacters =
+    password.match(specialCharactersRegExp)?.length || 0;
+
+  return {
+    totalLength,
+    upperCase,
+    lowerCase,
+    numbersAmount,
+    specialCharacters,
+  };
+};
 
 export function calculatePasswordStrength(password: string): number {
   let score = 0;
