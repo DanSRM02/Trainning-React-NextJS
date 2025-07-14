@@ -1,5 +1,3 @@
-/* --- Estilos Futuristas Globales para la Aplicación --- */
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
@@ -13,7 +11,6 @@
   --text-color: #c7d2fe;
 }
 
-/* 2. Estilos Globales y de Fondo */
 body {
   background-color: var(--dark-bg);
   background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
@@ -22,14 +19,13 @@ body {
   padding: 0;
 }
 
-/* 3. Layout Principal */
 .main-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main-content {
+.main-content {
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -37,9 +33,6 @@ main-content {
   padding: 2rem;
 }
 
-/* ======================================================================== */
-/* 4. HEADER / CABECERA */
-/* ======================================================================== */
 .futuristic-header {
   padding: 1rem 2rem;
   background: var(--glass-bg);
@@ -90,9 +83,6 @@ main-content {
   border-bottom-color: var(--primary-glow);
 }
 
-/* ======================================================================== */
-/* 5. FOOTER / PIE DE PÁGINA */
-/* ======================================================================== */
 .futuristic-footer {
   padding: 1.5rem 2rem;
   background: rgba(10, 25, 47, 0.95);
@@ -103,10 +93,6 @@ main-content {
   text-transform: uppercase;
   color: rgba(199, 210, 254, 0.6);
 }
-
-/* ======================================================================== */
-/* 6. ESTILOS PARA LOS COMPONENTES DEL VERIFICADOR */
-/* ======================================================================== */
 
 .password-checker-container {
   display: flex;
@@ -192,13 +178,11 @@ main-content {
 .feedback-card progress[data-level="4"]::-webkit-progress-value { background: linear-gradient(90deg, var(--success-glow), #6fffd2); box-shadow: 0 0 8px var(--success-glow), 0 0 4px var(--success-glow) inset; }
 .feedback-card progress[data-level="4"]::-moz-progress-bar { background: linear-gradient(90deg, var(--success-glow), #6fffd2); box-shadow: 0 0 8px var(--success-glow), 0 0 4px var(--success-glow) inset; }
 
-/* Animación de pulso para el brillo de las tarjetas */
 @keyframes pulse-glow { 
   0% { box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 0 0 8px rgba(0, 246, 255, 0.6) inset; } 
   50% { box-shadow: 0 0 35px rgba(0, 246, 255, 0.6), 0 0 10px rgba(0, 246, 255, 0.8) inset; } 
   100% { box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 0 0 8px rgba(0, 246, 255, 0.6) inset; } 
 }
-
 
 .password-options-card {
   padding: 2rem;
@@ -213,10 +197,9 @@ main-content {
   width: 100%;
   max-width: 480px;
   box-sizing: border-box;
-  margin-top: 2rem; /* Para separarlo de la tarjeta de arriba */
+  margin-top: 2rem;
 }
 
-/* Estilo para el título de la tarjeta */
 .options-title {
   font-size: 1.5rem;
   text-align: center;
@@ -224,25 +207,23 @@ main-content {
   letter-spacing: 2px;
   color: var(--text-color);
   text-shadow: 0 0 8px var(--primary-glow-transparent);
-  margin: 0 0 1.5rem 0; /* Espacio debajo del título */
+  margin: 0 0 1.5rem 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0, 246, 255, 0.2);
 }
 
-/* Estilo para la lista de opciones */
 .options-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Espacio entre cada opción */
+  gap: 1rem;
 }
 
-/* Estilo para cada ítem de la lista */
 .option-item {
   color: var(--text-color);
-  background-color: rgba(0, 246, 255, 0.05); /* Un fondo muy sutil */
+  background-color: rgba(0, 246, 255, 0.05); 
   border: 1px solid rgba(0, 246, 255, 0.1);
   padding: 0.75rem 1rem;
   border-radius: 6px;
