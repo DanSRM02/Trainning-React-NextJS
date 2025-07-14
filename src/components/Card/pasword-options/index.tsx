@@ -4,13 +4,27 @@ type PasswordOptionsProps = {
   posiblePasswordOptions: string[];
 };
 
-const PasswordOptions = ({ posiblePasswordOptions } : PasswordOptionsProps) => {  
+const PasswordOptions = ({ posiblePasswordOptions }: PasswordOptionsProps) => {
+  
+  if (!posiblePasswordOptions || posiblePasswordOptions.length === 0) {
+    return null;
+  }
+
   return (
-    <div>
-      <h2>Posible Password Options</h2>
-      <ul>
+    <div className="password-options-card">
+      
+      
+      <h2 className="options-title">Password Suggestions</h2>
+
+      
+      <ul className="options-list">
         {posiblePasswordOptions.map((password, index) => (
-          <li key={index}>{password}</li>
+
+          
+          <li key={index} className="option-item">
+            {password}
+          </li>
+
         ))}
       </ul>
     </div>
