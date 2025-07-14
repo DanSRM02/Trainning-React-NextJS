@@ -16,6 +16,7 @@ import {
 import { charactersInPasswordType } from "@/utils/types/charactersInPasswordType";
 import { SecurityLevel } from "@/components/Card/types/CardTypes";
 import { CardComponent } from "@/components/Card";
+import PasswordOptions from "@/components/Card/pasword-options";
 
 function PasswordChecker() {
   const [password, setPassword] = useState("");
@@ -69,6 +70,7 @@ function PasswordChecker() {
           charactersInPassword?.securityLevel || SecurityLevel.none
         }
       />
+      <PasswordOptions posiblePasswordOptions={["hola", "abc123", "asdd*123"]} />
     </>
   );
 }
