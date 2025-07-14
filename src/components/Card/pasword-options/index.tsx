@@ -4,13 +4,28 @@ type PasswordOptionsProps = {
   posiblePasswordOptions: string[];
 };
 
-const PasswordOptions = ({ posiblePasswordOptions } : PasswordOptionsProps) => {  
+const PasswordOptions = ({ posiblePasswordOptions }: PasswordOptionsProps) => {
+  // Pequeña mejora: si no hay opciones, no mostramos nada.
+  if (!posiblePasswordOptions || posiblePasswordOptions.length === 0) {
+    return null;
+  }
+
   return (
-    <div>
-      <h2>Posible Password Options</h2>
-      <ul>
+    // 1. Clase para la tarjeta de cristal
+    <div className="password-options-card">
+      
+      {/* 2. Clase para el título */}
+      <h2 className="options-title">Password Suggestions</h2>
+
+      {/* 3. Clase para la lista */}
+      <ul className="options-list">
         {posiblePasswordOptions.map((password, index) => (
-          <li key={index}>{password}</li>
+
+          // 4. Clase para cada elemento de la lista
+          <li key={index} className="option-item">
+            {password}
+          </li>
+
         ))}
       </ul>
     </div>

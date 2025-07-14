@@ -29,7 +29,7 @@ body {
   min-height: 100vh;
 }
 
-main {
+main-content {
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -197,4 +197,61 @@ main {
   0% { box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 0 0 8px rgba(0, 246, 255, 0.6) inset; } 
   50% { box-shadow: 0 0 35px rgba(0, 246, 255, 0.6), 0 0 10px rgba(0, 246, 255, 0.8) inset; } 
   100% { box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 0 0 8px rgba(0, 246, 255, 0.6) inset; } 
+}
+
+
+.password-options-card {
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 246, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), 
+              0 0 8px rgba(0, 246, 255, 0.6) inset;
+  animation: pulse-glow 5s infinite ease-in-out;
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin-top: 2rem; /* Para separarlo de la tarjeta de arriba */
+}
+
+/* Estilo para el título de la tarjeta */
+.options-title {
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-color);
+  text-shadow: 0 0 8px var(--primary-glow-transparent);
+  margin: 0 0 1.5rem 0; /* Espacio debajo del título */
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 246, 255, 0.2);
+}
+
+/* Estilo para la lista de opciones */
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espacio entre cada opción */
+}
+
+/* Estilo para cada ítem de la lista */
+.option-item {
+  color: var(--text-color);
+  background-color: rgba(0, 246, 255, 0.05); /* Un fondo muy sutil */
+  border: 1px solid rgba(0, 246, 255, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.option-item:hover {
+  background-color: rgba(0, 246, 255, 0.15);
+  border-color: rgba(0, 246, 255, 0.4);
 }
