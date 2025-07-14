@@ -12,6 +12,7 @@ import {
   calculateCharacterPassword,
   calculatePasswordStrength,
   getSecurityLevelFromScore,
+  possiblePasswords
 } from "@/utils/logic";
 import { charactersInPasswordType } from "@/utils/types/charactersInPasswordType";
 import { SecurityLevel } from "@/components/Card/types/CardTypes";
@@ -70,7 +71,7 @@ function PasswordChecker() {
           charactersInPassword?.securityLevel || SecurityLevel.none
         }
       />
-      <PasswordOptions posiblePasswordOptions={["hola", "abc123", "asdd*123"]} />
+      <PasswordOptions posiblePasswordOptions={possiblePasswords()} />
     </>
   );
 }
