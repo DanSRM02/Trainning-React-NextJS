@@ -3,12 +3,6 @@
 import React, { ChangeEvent, useState } from "react";
 import { FormComponent } from "@/components/form";
 import {
-  lowerCaseRegExp,
-  numbersCharactersRegExp,
-  specialCharactersRegExp,
-  uppercaseRegExp,
-} from "@/utils/data/regexp";
-import {
   calculateCharacterPassword,
   calculatePasswordStrength,
   getSecurityLevelFromScore,

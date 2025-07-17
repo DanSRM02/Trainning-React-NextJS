@@ -1,5 +1,4 @@
 import CardPost from "@/components/post/cardPost";
-import { DUMMY_POSTS } from "@/utils/data";
 import { dataResponse } from "@/utils/types/reponseType";
 import { notFound } from "next/navigation";
 

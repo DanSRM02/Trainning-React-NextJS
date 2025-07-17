@@ -5,8 +5,7 @@ import { lowerCaseRegExp, numbersCharactersRegExp, specialCharactersRegExp, uppe
 export function getSecurityLevelFromScore(score: number): SecurityLevel {
   if (score >= SecurityLevel.high) return SecurityLevel.high;
   if (score >= SecurityLevel.medium) return SecurityLevel.medium;
-  if (score >= SecurityLevel.low) SecurityLevel.low;
-  if (score > 0) return SecurityLevel.none;
+  if (score >= SecurityLevel.low)return SecurityLevel.low;
   return SecurityLevel.none;
 }
 
