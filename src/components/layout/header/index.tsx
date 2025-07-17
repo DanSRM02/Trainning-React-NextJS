@@ -5,19 +5,19 @@ export const Header = () => {
   return (
     <header className="futuristic-header">
       <div className="logo">
-        <Link href="/">
+        <Link href="/password-checker">
           SECURE-CHECK
         </Link>
       </div>
       <nav>
         <ul>
           <li>
-            <Link href="/password-checker" className="active">
+            <Link href="/password-checker">
               Checker
             </Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/blog">
               Blog
             </Link>
           </li>
@@ -26,3 +26,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

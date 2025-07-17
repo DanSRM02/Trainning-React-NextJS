@@ -1,26 +1,21 @@
 import CardPost from "@/components/post/cardPost";
-import { dataResponse } from "@/utils/types/reponseType";
+import { getPostById } from "@/utils/data";
 import { notFound } from "next/navigation";
 
 type PostProps = {
-  post: dataResponse[];
   params: Promise<{
     id: string;
   }>;
 };
 
-export default async function Post({ params, post }: PostProps) {
+export default async function Post({ params }: PostProps) {
   const { id } = await params;
-  
-  const cardInfoPost = post.find((post) => {
-    return post.id === Number(id);
-  });
 
-  console.log(cardInfoPost);
+  const post = await getPostById(id);
 
-  if (!cardInfoPost) {
+  if (!post) {
     notFound();
   }
 
-  return <CardPost {...cardInfoPost} />;
+  return <CardPost {...post} />;
 }

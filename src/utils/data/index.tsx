@@ -65,6 +65,22 @@ export async function getData() {
     const json = await response.json();
     return json;
   } catch (error) {
-    throw error
+    throw error;
+  }
+}
+
+export async function getPostById(id: string) {
+  const url = `https://jsonplaceholder.typicode.com/posts/${id}`;
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    throw error;
   }
 }
