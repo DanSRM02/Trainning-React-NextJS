@@ -1,5 +1,5 @@
 import CardPost from "@/components/post/cardPost";
-import { getPostById } from "@/utils/data";
+import { getData, getPostById } from "@/utils/data";
 import { notFound } from "next/navigation";
 
 type PostProps = {
@@ -7,6 +7,13 @@ type PostProps = {
     id: string;
   }>;
 };
+
+export async function generateStaticParams() {
+  const posts = await getData();
+  return posts.map((post) => ({
+    id: String(post.id),
+  }));
+}
 
 export default async function Post({ params }: PostProps) {
   const { id } = await params;

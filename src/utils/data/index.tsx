@@ -4,6 +4,7 @@ import coupleCookingImage from "@/assets/images/posts/couple-cooking.jpg";
 import hikingImage from "@/assets/images/posts/hiking.jpg";
 import landscapeImage from "@/assets/images/posts/landscape.jpg";
 import { postTypes } from "../types/postType";
+import { dataResponse } from "../types/reponseType";
 
 export const DUMMY_POSTS: postTypes[] = [
   {
@@ -63,7 +64,7 @@ export async function getData() {
     }
 
     const json = await response.json();
-    return json;
+    return json as dataResponse[];
   } catch (error) {
     throw error;
   }
@@ -79,7 +80,7 @@ export async function getPostById(id: string) {
     }
 
     const json = await response.json();
-    return json;
+    return json as dataResponse;
   } catch (error) {
     throw error;
   }
